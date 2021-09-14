@@ -12,15 +12,29 @@
           height="28"
         />
       </router-link>
+
+      <a
+        role="button"
+        class="navbar-burger"
+        aria-label="menu"
+        aria-expanded="false"
+        @click="isActive = !isActive"
+      >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
     </div>
 
-    <div id="navbarBasicExample" class="navbar-menu">
+    <div
+      id="navbarBasicExample"
+      class="navbar-menu"
+      :class="{ 'is-active': isActive }"
+    >
       <div class="navbar-start">
-        <router-link :to="{ name: 'boards' }" class="navbar-item">
+        <router-link v-if="user" :to="{ name: 'boards' }" class="navbar-item">
           Tableros
         </router-link>
-
-        <a class="navbar-item"> Documentation </a>
       </div>
 
       <div class="navbar-end">
@@ -43,17 +57,21 @@
 </template>
 
 <script>
-import { computed } from 'vue';
+import { ref, computed } from 'vue';
 import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
 export default {
   setup() {
     const store = useStore();
     const router = useRouter();
+
+    const isActive = ref(false);
     const user = computed(() => store.state.userModule.user);
 
     return {
+      isActive,
       user,
+
       userLogin: async () => {
         try {
           await store.dispatch('userModule/userLogin');
