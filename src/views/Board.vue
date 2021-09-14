@@ -5,11 +5,11 @@
     :style="{ backgroundColor: board.backgroundColor }"
   >
     <header>
-      <h2 class="title">{{ board.name }}</h2>
+      <h2 class="title is-size-5-mobile mb-0">{{ board.name }}</h2>
       <div>
         <create-board :typeAdd="false" />
         <button class="button is-danger ml-2" @click="deleteBoard">
-          Eliminar Tablero
+          Eliminar
         </button>
       </div>
     </header>
@@ -66,8 +66,16 @@ export default {
   overflow-x: scroll;
   padding: 1rem;
   header {
+    min-width: 94%;
     display: flex;
+    align-items: center;
     justify-content: space-between;
+    position: absolute;
+    height: 4rem;
+    overflow: hidden;
+  }
+  .board-wrapper {
+    margin-top: 4rem;
   }
 }
 .board-wrapper,

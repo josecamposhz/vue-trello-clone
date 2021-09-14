@@ -53,7 +53,7 @@ export default {
     const store = useStore();
 
     const title = computed(() =>
-      typeAdd ? 'Crear Tablero' : 'Editar Tablero'
+      typeAdd ? 'Crear Tablero' : 'Editar'
     );
     const isOpen = ref(false);
     const board = ref(

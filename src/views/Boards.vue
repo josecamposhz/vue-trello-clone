@@ -4,7 +4,7 @@
     <create-board />
     <ul class="board-list is-flex-wrap-wrap">
       <li
-        class="column is-3 is-tablet-4 is-mobile-12"
+        class="column is-12-mobile is-4-tablet is-3-desktop"
         v-for="board in boards"
         :key="board.name"
         @click="openBoard(board.id)"
